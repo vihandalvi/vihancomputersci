@@ -1,0 +1,66 @@
+@startuml osborneairlines
+
+Object <|-- Passenger
+Object <|-- Airport
+Object <|-- Flight
+Object <|-- Reservation
+
+class Object{
+    String toString()
+}
+
+interface Comparable{
+    +int CompareTo()
+}
+
+class Passenger implements Comparable{
+    -String _firstname
+    -String _lastname
+    +Passenger FindPassenger()
+    +ArrayList<Reservation> FindReservationForPassenger()
+    +ArrayList<Passenger> FindPassengersForFlight()
+    #Passenger Ux_CreatePassenger()
+}
+
+class Flight implements Comparable{
+    -Airport _departureairport
+    -Airport _arrivalairport
+    -FlightDate _flightdate
+    -int _capacity
+    -String _flightnumber
+    +Flight FindFlight()
+    +String GetLocalArrivalDate()
+    +String GetLocalDepartureDate()
+    #Flight Ux_CreateFlight()
+}
+
+class FlightDate{
+    -ZonedDateTime _utcdeparturetime
+    -ZonedDateTime _utcarrivaltime
+    -LocalDateTime _localdeparturetime
+    -LocalDateTime _localarrivaltime
+    -Duration _d
+}
+
+
+
+class Reservation implements Comparable{
+    -ArrayList<Passenger> _passengerlist
+    -Flight _flight
+    -String _reservationnumber
+    +Reservation FindReservation()
+    #Reservation Ux_CreateReservation()
+}
+
+class Airport implements Comparable {
+    -String _name;
+    -String _city;
+    -String _state;
+    -String _timezoneid;
+    +Airport FindAirport()
+    #Airport Ux_FindAirport()
+    #Airport Ux_CreateAirport()
+    #Airport Ux_DeleteAirport()
+}
+
+@enduml

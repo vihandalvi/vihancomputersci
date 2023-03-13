@@ -1,0 +1,66 @@
+
+@startuml relations
+class Passenger {
+    -String _firstname
+    -String _lastname
+    +int compareTo()
+    +Passenger FindPassenger()
+    +ArrayList<Reservation> FindReservationForPassenger()
+    +ArrayList<Passenger> FindPassengersForFlight()
+    #Passenger Ux_CreatePassenger()
+}
+
+class Flight {
+    -Airport _departureairport
+    -Airport _arrivalairport
+    -FlightDate _flightdate
+    -int _capacity
+    -String _flightnumber
+    +int compareTo()
+    +Flight FindFlight()
+    +String GetLocalArrivalDate()
+    +String GetLocalDepartureDate()
+    #Flight Ux_CreateFlight()
+}
+
+class FlightDate{
+    -ZonedDateTime _utcdeparturetime
+    -ZonedDateTime _utcarrivaltime
+    -LocalDateTime _localdeparturetime
+    -LocalDateTime _localarrivaltime
+    -Duration _d
+}
+
+
+
+class Reservation{
+    -ArrayList<Passenger> _passengerlist
+    -Flight _flight
+    -String _reservationnumber
+    +int compareTo()
+    +Reservation FindReservation()
+    #Reservation Ux_CreateReservation()
+}
+
+class Airport {
+    -String _name;
+    -String _city;
+    -String _state;
+    -String _timezoneid;
+    +int compareTo()
+    +Airport FindAirport()
+    #Aiport Ux_FindAirport()
+    #Aiport Ux_CreateAirport()
+    #Aiport Ux_DeleteAirport()
+}
+
+Flight::_arrivalairport -->Airport
+Flight::_departureairport-->Airport
+Flight::_flightdate -->FlightDate
+Reservation::_passengerlist-->Passenger
+Reservation::_flight-->Flight
+
+
+
+
+@enduml

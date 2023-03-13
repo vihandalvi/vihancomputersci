@@ -1,0 +1,7 @@
+17  3.5  1492
+
+           75   86 5.5
+
+Yogi Bear raided 115 picnic baskets finding an average of 3.5 tuna sandwiches per basket.
+
+I love APCS.

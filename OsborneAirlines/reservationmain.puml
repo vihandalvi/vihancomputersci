@@ -1,0 +1,28 @@
+@startuml ReservationMain
+
+class ReservationMain{
+    -String _airportfilepath
+    -String _flightfilepath
+    -String _reservationfilepath
+    -ArrayList _flights
+    -ArrayList _reservations
+    -ArrayList _airports 
+    -enum DataType
+    -void ReadFile()
+    -void WriteFile()
+    +void main()
+    -void mainmenu()
+    -void printmenu()
+    -void savemenu()
+    -void reservationmenu()
+    -void flightmenu()
+    -void passengermenu()
+    -void airportmenu()
+}
+
+ReservationMain::_flights --> Flight
+ReservationMain::_airports --> Airport
+ReservationMain::_reservations --> Reservation
+
+
+@enduml
